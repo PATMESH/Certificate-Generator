@@ -11,7 +11,7 @@ let htmlTemplate = fs.readFileSync(htmlTemplatePath, 'utf-8');
 
 
 async function generateCertificate(data, res) {
-  const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   await page.setContent(htmlTemplate);
 
