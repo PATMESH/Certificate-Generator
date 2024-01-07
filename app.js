@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer'); 
+const pdf = require('html-pdf');
 const fs = require('fs');
 const app = express();
 const port = 3000;
@@ -10,21 +10,18 @@ const htmlTemplatePath = path.join(__dirname, 'certificate-template.html');
 let htmlTemplate = fs.readFileSync(htmlTemplatePath, 'utf-8');
 
 
-async function generateCertificate(data, res) {
-    const browser = await puppeteer.launch({ headless: 'new' });
-  const page = await browser.newPage();
-  await page.setContent(htmlTemplate);
-
+function generateCertificate(data, res) {
+    const options = { format: 'Letter' };
   
-
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', `attachment; filename=${data.courseName}Certificate.pdf`);
-
-  const pdfBuffer = await page.pdf({ format: 'Letter' });
-  res.end(pdfBuffer);
-
-  await browser.close();
-}
+    pdf.create(htmlTemplate, options).toStream((err, stream) => {
+      if (err) return console.log(err);
+  
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename=${data.courseName}Certificate.pdf`);
+  
+      stream.pipe(res);
+    });
+  }
   
   app.get('/generateCertificate', (req, res) => {
     const assessmentData = {
