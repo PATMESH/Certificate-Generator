@@ -1,0 +1,90 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .certificate-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #fff;
+      border: 2px solid #3498db;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+      border: 2px solid #3498db;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    h1 {
+      color: #3498db;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    p {
+      color: #555;
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    #userName {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    #courseName {
+      font-style: italic;
+      color: #27ae60;
+    }
+
+    #issueDate,
+    #certificateId {
+      font-size: 16px;
+      color: #6c757d;
+    }
+
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      color: rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .signature {
+      width: 100px;
+      height: auto;
+      margin-top: 30px;
+      border-top: 2px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="watermark">TefoLOGIC</div>
+  <div class="certificate-container">
+    <img src="https://static.wixstatic.com/media/30fd6d_74b1751f1930415ea0e61002e1624f0f~mv2.png/v1/fill/w_203,h_54,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo_horizontal_5%20(1).png" alt="Logo" class="logo" />
+    <h1>Certificate of Completion</h1>
+    <p>This is to certify that <span id="userName"></span></p>
+    <p>has successfully completed the course <span id="courseName"></span></p>
+    <p>Issued on <span id="issueDate"></span></p>
+    <p>Certificate ID: <span id="certificateId"></span></p>
+    <img src="https://www.pngkey.com/png/detail/99-993155_certified-png.png" alt="Signature" class="signature" />
+  </div>
+</body>
+</html>
